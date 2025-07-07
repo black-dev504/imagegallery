@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Image>
  */
-class ImagesFactory extends Factory
+class ImageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,7 +21,8 @@ class ImagesFactory extends Factory
             'name' => fake()->sentence(3),
             'is_fav' => fake()->boolean(),
             'description' => fake()->paragraph(),
-            'img_path' => fake()->image('storage/app/photos', 640, 480, null, false),
+            'img_path' => fake()->image(storage_path('app/photos'), 640, 480, null, false)
+
 
         ];
     }

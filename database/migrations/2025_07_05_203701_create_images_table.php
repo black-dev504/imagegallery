@@ -17,10 +17,12 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('img_id')->unique();
-            $table->boolean('is_fav');
+            $table->string('img_path')->unique();
+            $table->boolean('is_fav')->default(false);
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->integer('album_id')->nullable();
-            $table->integer('user_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -38,5 +40,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('images');
+        Schema::dropIfExists('album_image');
     }
 };
