@@ -18,7 +18,7 @@
 
     <div class="absolute top-0 right-0 ">
         <button
-            wire:click="toggleFavourite"
+            wire:click="toggle_favourite({{ $image->id }})"
             class="rounded-full p-2 transition duration-300 hover:scale-90"
         >
             <svg

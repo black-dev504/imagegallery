@@ -15,15 +15,32 @@ class Gallery extends Component
     #[On('image-updated')]
     public function refreshGallery(): void
     {
+
         $this->images = $this->user->images()->orderBy('created_at', 'desc')->get();
     }
 
+    #[On('toggle-favourite')]
+    public function toggle_favourite( $id)
+    {
+
+        $image = Image::findOrFail($id);
+        $isFavourite = !$image->is_fav;
+
+        if ($image) {
+            $image->update([
+                'is_fav' => $isFavourite
+            ]);
+
+            $this->dispatch('image-updated');
+
+
+        }
+    }
     public function mount()
     {
         $this->user = auth()->user();
 
         if (! $this->user) {
-            session()->flash('error', 'You must be logged in.');
             return $this->redirect('login', navigate: true);
         }
 
@@ -32,8 +49,8 @@ class Gallery extends Component
 
     public function render()
     {
-        return view('livewire.gallery', [
-            'images' => $this->images,
-        ]);
+        return view('livewire.gallery',
+
+        );
     }
 }

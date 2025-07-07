@@ -13,28 +13,32 @@ class Favourite extends Component
     public $images;
     public $user;
 
+    #[On('loadfav')]
+    public function loadFav(){
+        $this->images = Image::where('is_fav', true)->where('user_id', $this->user->id)->get();
+}
 
-    #[On('toggleFavourite')]
-    public function toggleFavourite( $id): void
+
+    #[On('toggle-favourite')]
+    public function toggle_favourite( $id)
     {
-        dd('hello');
+
         $image = Image::findOrFail($id);
-
-
-
         $isFavourite = !$image->is_fav;
 
         if ($image) {
-
             $image->update([
                 'is_fav' => $isFavourite
             ]);
 
-            $this->dispatch('image-updated');
+
+            $this->dispatch('loadfav');
 
 
         }
     }
+
+
     public function mount()
     {
         $this->user = auth()->user();
@@ -45,7 +49,8 @@ class Favourite extends Component
         }
 
         $this->heading = 'Favourite Images';
-        $this->images = Image::where('is_fav', true)->where('user_id', $this->user->id)->get();
+        $this->loadFav();
+
     }
     public function render()
     {

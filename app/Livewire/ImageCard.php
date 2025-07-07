@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\Livewire;
 
 class ImageCard extends Component
 {
@@ -10,13 +11,18 @@ class ImageCard extends Component
     public $image;
     public $user;
 
-    public function toggleFavourite(){
-        $this->dispatch('toggleFavourite', ['id' => $this->image->id]);
+    public function toggle_favourite($id){
+
+
+       $this->dispatch('toggle-favourite', $id);
+//       $this->dispatch('image-updated');
+
     }
 
     public function viewImage()
     {
         return redirect()->route('show', ['id' => $this->image->id]);
+
 
 
     }

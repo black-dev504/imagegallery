@@ -8,6 +8,7 @@
     @empty
         <p class="text-center text-gray-500">No image found.</p>
     @endforelse
+
 </x-display>
 
 

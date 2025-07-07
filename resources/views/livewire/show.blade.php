@@ -7,7 +7,15 @@
         alt="{{ $image->name }}"
         class="w-full h-full object-cover"
     >
-        </div>
+
+        @if (session()->has('error'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4" role="alert">
+                <strong class="font-bold">Error:</strong>
+                <span class="block sm:inline">{{ session('error') }}</span>
+            </div>
+        @endif
+
+    </div>
 
     <div class="flex flex-col ml-10">
         <h1 class="font-bold text-xl">Name: {{$image->name}}</h1>
