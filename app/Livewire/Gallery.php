@@ -12,10 +12,9 @@ class Gallery extends Component
     public $images;
     public $user;
 
-    #[On('imageupdated')]
+    #[On('image-updated')]
     public function refreshGallery(): void
     {
-
         $this->images = $this->user->images()->orderBy('created_at', 'desc')->get();
     }
 
@@ -31,19 +30,32 @@ class Gallery extends Component
                 'is_fav' => $isFavourite
             ]);
 
-            $this->dispatch('imageupdated');
+
+            $this->dispatch('refresh-image');
+
 
 
         }
     }
+
+    #[On('delete-image')]
+    public function deleteImage($id)
+    {
+        $image = Image::findOrFail($id);
+
+        if ($image) {
+            $image->delete();
+            $this->dispatch('image-updated');
+        }
+    }
+
     public function mount()
     {
         $this->user = auth()->user();
 
-        if (! $this->user) {
+        if (!$this->user) {
             return $this->redirect('login', navigate: true);
         }
-
         $this->refreshGallery();
     }
 

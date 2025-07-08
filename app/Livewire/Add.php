@@ -22,15 +22,8 @@ class Add extends Component
     public $image;
     public $description;
     public $user;
-
-
-    public function mount(): void
-    {
-        $this->name = '';
-        $this->image = '';
-        $this->description = '';
-    }
-
+    public $albums;
+    public $album_id;
 
 
     public function save()
@@ -39,8 +32,6 @@ class Add extends Component
         $this->validate();
 
         //check if user is authenticated
-
-        $this->user = auth()->user();
 
         if (! $this->user) {
             return $this->redirect('login', navigate:true);
@@ -55,6 +46,8 @@ class Add extends Component
                 'img_path' => $path,
                 'description' => $this->description,
                 'user_id' => $this->user->id,
+                'album_id' => $this->album_id
+
 
             ]);
 
@@ -62,6 +55,20 @@ class Add extends Component
         $this->reset();
 
         return $this->redirect('gallery', navigate:true);
+
+    }
+
+    public function mount(): void
+    {
+
+        $this->name = '';
+        $this->image = '';
+        $this->description = '';
+
+        $this->user = auth()->user();
+        $this->albums = $this->user->albums()->get();
+
+
 
     }
 

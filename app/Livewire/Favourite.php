@@ -26,16 +26,12 @@ class Favourite extends Component
         $image = Image::findOrFail($id);
         $isFavourite = !$image->is_fav;
 
-        if ($image) {
-            $image->update([
+        $image->update([
                 'is_fav' => $isFavourite
-            ]);
+        ]);
 
+        $this->dispatch('loadfav');
 
-            $this->dispatch('loadfav');
-
-
-        }
     }
 
 
@@ -43,15 +39,14 @@ class Favourite extends Component
     {
         $this->user = auth()->user();
 
-        if (! $this->user) {
-            session()->flash('error', 'You must be logged.');
+        if (!$this->user) {
             return $this->redirect('login', navigate:true);
         }
 
         $this->heading = 'Favourite Images';
         $this->loadFav();
-
     }
+
     public function render()
     {
         return view('livewire.favourite');

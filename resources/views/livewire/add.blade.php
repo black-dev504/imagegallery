@@ -6,19 +6,19 @@
     <form wire:submit="save" class="w-lg mx-auto">
         <div class="mb-6">
             <label for="name" class="block text-sm font-medium text-gray-700">Image Name</label>
-            <input type="text" id="name" wire:model="name" class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
+            <input type="text" id="name" wire:model="name" class="mt-1 block w-full h-10 p-2 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
             <x-error name="name"/>
         </div>
 
         <div class="mb-6">
             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-            <textarea name="description" id="description" wire:model="description" class="mt-1 block h-15 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></textarea>
+            <textarea name="description" id="description" wire:model="description" class="mt-1 block p-2 h-15 w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></textarea>
             <x-error name="description"/>
         </div>
 
         <div class="mb-6">
             <label for="image" class="block text-sm font-medium text-gray-700">Select Image</label>
-            <input type="file" name="image" id="image" wire:model="image"  class="mt-1 block"  />
+            <input type="file" name="image" id="image" wire:model="image"  class="mt-1  block"  />
             <x-error name="image"/>
         </div>
 

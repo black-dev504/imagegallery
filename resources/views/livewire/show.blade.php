@@ -20,6 +20,8 @@
     <div class="flex flex-col ml-10">
         <h1 class="font-bold text-xl">Name: {{$image->name}}</h1>
         <p>Description: {{$image->description}}</p>
+        <p>Created: {{ $image->created_at->format('D-M-Y') }}
+        </p>
 
     </div>
 </div>

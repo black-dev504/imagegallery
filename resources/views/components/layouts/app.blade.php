@@ -11,7 +11,7 @@
     </head>
     <body>
     <div class="">
-        <nav class="flex justify-between items-center py-8 px-5 border-b border-black/10">
+        <nav class="flex justify-between items-center py-8 px-5 border-b border-black/10 sticky  top-0">
             <div>
                 <a href="/">
                     <svg width="150" height="50" viewBox="0 0 91 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +59,7 @@
 
             </div>
         </nav>
-        <section class="flex ">
+        <section class="flex">
 
             @auth
             <aside class="fixed  left-0 w-20 h-full border-r border-black/10 pt-12 flex flex-col items-center py-6 space-y-8">
@@ -84,9 +84,9 @@
                         0v-5H6a1 1 0 110-2h5V6a1 1 0 011-1z"/>
                     </x-side_icon>
 
-                    <x-side_icon  :active="request()->is('album')" name="album" href="/albums">
-                        <path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm4 4h6v2H9V9zm0 4h6v2H9v-2z"/>
-                    </x-side_icon>
+{{--                    <x-side_icon  :active="request()->is('album')" name="album" href="/albums">--}}
+{{--                        <path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm4 4h6v2H9V9zm0 4h6v2H9v-2z"/>--}}
+{{--                    </x-side_icon>--}}
 
 
                 </nav>
