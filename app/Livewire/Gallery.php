@@ -12,7 +12,7 @@ class Gallery extends Component
     public $images;
     public $user;
 
-    #[On('image-updated')]
+    #[On('imageupdated')]
     public function refreshGallery(): void
     {
 
@@ -31,7 +31,7 @@ class Gallery extends Component
                 'is_fav' => $isFavourite
             ]);
 
-            $this->dispatch('image-updated');
+            $this->dispatch('imageupdated');
 
 
         }

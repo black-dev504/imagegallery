@@ -31,10 +31,7 @@ class Add extends Component
         $this->description = '';
     }
 
-    public function sendEvent()
-    {
-        $this->dispatch('image-updated');
-    }
+
 
     public function save()
     {
@@ -46,7 +43,6 @@ class Add extends Component
         $this->user = auth()->user();
 
         if (! $this->user) {
-            session()->flash('error', 'You must be logged in to upload an image.');
             return $this->redirect('login', navigate:true);
         }
 
@@ -63,15 +59,7 @@ class Add extends Component
             ]);
 
 
-
-
         $this->reset();
-        $this->sendEvent();
-
-
-
-        session()->flash('message', 'Image uploaded successfully!');
-
 
         return $this->redirect('gallery', navigate:true);
 

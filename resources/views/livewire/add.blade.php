@@ -22,11 +22,24 @@
             <x-error name="image"/>
         </div>
 
+{{--        <div class="mb-6">--}}
+{{--            <label for="album" class="block text-sm font-medium text-gray-700">Select Album</label>--}}
+{{--            <select id="album" wire:model="album_id" class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">--}}
+{{--                <option value="">Select an album</option>--}}
+{{--                @foreach($albums as $album)--}}
+{{--                    <option value="{{ $album->id }}">{{ $album->name }}</option>--}}
+{{--                @endforeach--}}
+{{--            </select>--}}
+{{--            <x-error name="album_id"/>--}}
+{{--        </div>--}}
+
         <div class="mb-6">
             <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                 Upload Image
             </button>
         </div>
+
+
 
         <div class="">
             @if ($image)
